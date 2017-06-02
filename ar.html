@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>AR Demo</title>
+<meta meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+* {
+    color: #ff8300;
+    font-size: 12px;
+}
+html,body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	text-align: center;
+	overflow-x: hidden;
+}
+.portrait canvas {
+	transform-origin: 0 0;
+	transform: rotate(-90deg) translateX(-100%);
+}
+canvas {
+ 	/*transform: scale(-1, 1);*/
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+#controlpanel {
+    position: fixed;
+    z-index: 9999;
+    width: calc(100% - 10px);
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    color: #ff8300;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+button {
+	background: transparent;
+	color: #ff8300;
+	border: 1px solid #ff8300;
+	padding: 4px;
+}
+.panel-datasource input {
+	background: transparent;
+	color: #ff8300;
+	border: 1px solid #ff8300;
+	padding: 4px 5px;
+	outline: none!important;
+}
+.panel-copyright {
+	font-size: 14px;
+	margin: 0 5px;
+}
+select {
+    background: transparent;
+    color: #ff8300;
+    border: 1px solid #ff8300;
+    padding: 2px;
+    outline: none;
+}
+select:active, select:hover {
+    outline: none;
+}
+select option {
+    background: #000;
+    padding: 2px;
+}
+#assignmentPanel {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    border: 1px solid #ff8b00;
+    padding: 4px;
+    font-size: 12px!important;
+    left: 5px;
+    display: none;
+    color: #ff8300;
+    font-family: 'Roboto', sans-serif;
+}
+
+#assignmentPanel td {
+    padding: 0 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!--h1><a href="https://github.com/artoolkit/artoolkit5/blob/master/doc/patterns/Matrix%20code%203x3%20(72dpi)/20.png" target="_blank">BARCODE</a></h1-->
+
+<div id="assignmentPanel">
+    <table id="assignmentTable"></table>
+</div>
+<div id="controlpanel">
+	<div class="panel-datasource">
+		<input type="text" id="inDatasource" value="rapidcps" oninput="inDataSourceChanged()">
+		<button onclick="updateDatasource()" id="btnUpdateDataSource">update</button>
+        <button onclick="showAssignmentPanel()">data assignments</button>
+	</div>
+	<div class="panel-copyright">
+        <select id="camera-list" onchange="videoSourceChange()"></select>
+	</div>
+</div>
+
+<script async src="js/artoolkit/artoolkit.js"></script>
+<script async src="js/three.js/three.min.js"></script>
+<script async src="js/artoolkit/artoolkit.three.js"></script>
+<script src="js/tween.min.js"></script>
+<script src="js/ar.js"></script>
+</body>
+</html>
